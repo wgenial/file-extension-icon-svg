@@ -2,7 +2,14 @@
 
 Load file extension icon using [vscode-icons](https://github.com/vscode-icons/vscode-icons)
 
-## Usage
+## Install & Usage
+
+Clone this project and run on terminal:
+```
+yarn install
+
+yarn run dev
+```
 
 ```
 http://localhost:3000/?file=script.jsx
