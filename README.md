@@ -32,6 +32,12 @@ http://localhost:3000/?file=icon.svg
 ![Alt text](https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/file_type_svg.svg?sanitize=true)
 
 
+## Demo
+https://codepen.io/giovanigenerali/pen/jJMaNK
+
+https://jsfiddle.net/giovanigenerali/4bcwko60/
+
+
 ## Related
 
 - [vscode-icons](https://github.com/vscode-icons/vscode-icons) extension for vscode
