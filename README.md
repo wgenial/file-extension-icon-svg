@@ -2,6 +2,8 @@
 
 Load file extension icon using [vscode-icons](https://github.com/vscode-icons/vscode-icons)
 
+[![Known Vulnerabilities](https://snyk.io//test/github/wgenial/file-extension-icon-svg/badge.svg?targetFile=package.json)](https://snyk.io//test/github/wgenial/file-extension-icon-svg?targetFile=package.json)
+
 ## Install & Usage
 
 Clone this project and run on terminal:
