@@ -1,5 +1,5 @@
 const http = require('http')
-const Url = require('url')
+const { URL } = require('url')
 const { extname } = require('path')
 const { getIconForFile } = require('vscode-icons-js')
 const axios = require('axios')
@@ -7,21 +7,35 @@ const axios = require('axios')
 const server = http.createServer()
 
 server.on('request', async (req, res) => {
-  try {
-    const { file } = Url.parse(req.url, true).query
+  const iconFallback = 'default_file.svg'
+  let iconFileExtension = iconFallback
+  let svg
+
+  const url = new URL(req.url, `${req.protocol}://${req.headers.host}`)
+  const file = url.searchParams.get('file')
+
+  if (file) {
     const extension = extname(file) || file.indexOf('.') !== -1 ? file : `.${file}`
-    const IconForFile = getIconForFile(extension)
-    const { data: svg } = await axios.get(
-      `https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/${IconForFile}`,
+
+    if (extension) {
+      iconFileExtension = getIconForFile(extension)
+    }
+  }
+
+  try {
+    const { data } = await axios.get(
+      `https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/${iconFileExtension}`,
       {
         responseType: 'arraybuffer'
       }
     )
-    res.setHeader('Content-type', 'image/svg+xml')
-    res.end(svg)
+    svg = data
   } catch (err) {
-    res.end(err.toString())
+    svg = `https://raw.githubusercontent.com/vscode-icons/vscode-icons/master/icons/${iconFileExtension}`
   }
+
+  res.setHeader('Content-type', 'image/svg+xml')
+  res.end(svg)
 })
 
 server.listen(process.env.PORT || 3000)
