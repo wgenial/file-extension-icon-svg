@@ -1,4 +1,4 @@
-# file-extension-icon-svg
+# File extension icon SVG
 
 Load file extension icon using [vscode-icons](https://github.com/vscode-icons/vscode-icons)
 
