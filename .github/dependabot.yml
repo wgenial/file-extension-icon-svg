@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      time: "08:00"
+      day: "monday"
+      timezone: "America/Sao_Paulo"
+    assignees:
+      - "giovanigenerali"
+    reviewers:
+      - "giovanigenerali"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
